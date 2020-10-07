@@ -1,5 +1,8 @@
-import logoJpg from "./scss/assets/img/logo_oy.jpg";
 import React from "react";
+
+import Button from "./Button";
+
+import logoJpg from "../scss/assets/img/logo_oy.jpg";
 
 function Header() {
     return (
@@ -13,7 +16,7 @@ function Header() {
                     </div>
                 </div>
                 <div className="header__cart">
-                    <a href="/cart.html" className="button button--cart">
+                    <Button className="button--cart">
                         <span>300 ₽</span>
                         <div className="button__delimiter"></div>
                         <svg
@@ -46,7 +49,10 @@ function Header() {
                             />
                         </svg>
                         <span>3</span>
-                    </a>
+                    </Button>
+
+
+
                 </div>
             </div>
         </div>

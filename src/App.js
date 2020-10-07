@@ -1,30 +1,19 @@
 import React from 'react';
 
-import Button from "./Button";
-import Header from "./Header";
+import Header from "./components/Header";
+import Categories from "./components/Categories";
 
 
 function App() {
-  return (
 
+  return (
       <div className="wrapper">
           <Header/>
-        <Button outline> 123</Button>
-        <Button test>Кнопка</Button>
 
         <div className="content">
           <div className="container">
             <div className="content__top row">
-              <div className="categories">
-                <ul>
-                  <li className="active">Все</li>
-                  <li>Япония</li>
-                  <li>Африка</li>
-                  <li>Америка</li>
-                  <li>Ближний восток</li>
-                  <li>Сеты</li>
-                </ul>
-              </div>
+              <Categories/>
               <div className="sort">
                 <div className="sort__label">
                   <svg
@@ -135,7 +124,7 @@ function App() {
                     src="https://kartinkinaden.ru/uploads/posts/2015-10/1445430381_57.jpg"
                     alt="Pizza"
                 />
-                <h4 className="pizza-block__title">Морской еж живой</h4>
+                <h4 className="pizza-block__title">МОРСКОЙ ЕЖ ЖИВОЙ</h4>
                 <div className="pizza-block__selector">
                   <ul>
                     <li className="active">опт</li>
@@ -173,7 +162,7 @@ function App() {
                     src="https://kartinkinaden.ru/uploads/posts/2015-10/1445430381_57.jpg"
                     alt="Pizza"
                 />
-                <h4 className="pizza-block__title">Устрица розовая Джоли</h4>
+                <h4 className="pizza-block__title">УСТРИЦА РОЗОВА ДЖОЛИ</h4>
                 <div className="pizza-block__selector">
                   <ul>
                     <li className="active">опт</li>
