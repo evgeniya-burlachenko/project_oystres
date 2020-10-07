@@ -1,9 +1,16 @@
 import React from 'react';
 
+import Button from "./Button";
+import Header from "./Header";
+
 
 function App() {
   return (
+
       <div className="wrapper">
+          <Header/>
+        <Button outline> 123</Button>
+        <Button test>Кнопка</Button>
 
         <div className="content">
           <div className="container">
