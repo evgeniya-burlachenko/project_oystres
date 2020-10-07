@@ -1,16 +1,18 @@
 import React from "react";
 
-function Categories() {
+function Categories({ items }) {
+
     return (
         <div>
             <div className="categories">
                 <ul>
                     <li className="active">Все</li>
-                    <li>Япония</li>
-                    <li>Африка</li>
-                    <li>Америка</li>
-                    <li>Ближний восток</li>
-                    <li>Сеты</li>
+                    {items.map((name, index) => (
+                        <li key={`${name}_${index}`}>{name}</li>
+                    ))} /*уникальное значение!*/
+
+
+
                 </ul>
             </div>
 
