@@ -18,7 +18,7 @@ function Header() {
                 <div className="header__cart">
                     <Button className="button--cart">
                         <span>300 ₽</span>
-                        <div className="button__delimiter"></div>
+                        <div className="button__delimiter"/>
                         <svg
                             width="18"
                             height="18"
@@ -50,8 +50,6 @@ function Header() {
                         </svg>
                         <span>3</span>
                     </Button>
-
-
 
                 </div>
             </div>

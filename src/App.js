@@ -3,7 +3,6 @@ import React from 'react';
 import {Header,Categories}from "./components";
 
 function App() {
-
   return (
       <div className="wrapper">
           <Header/>
@@ -11,7 +10,8 @@ function App() {
         <div className="content">
           <div className="container">
             <div className="content__top row">
-              <Categories items = {['Япония', 'Африка','Америка', 'Ближний восток','Сеты']}/>
+              <Categories
+                  onClickItem ={(name) => console.log(name)}items = {['Япония', 'Африка','Америка', 'Ближний восток','Сеты']}/>
               <div className="sort">
                 <div className="sort__label">
                   <svg
