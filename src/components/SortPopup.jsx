@@ -1,26 +1,35 @@
 import React from "react";
 
-function SortPopup() {
+function SortPopup({items}) {
     const [visiblePopup,setVisiblePopup] = React.useState(false);
+    const [activeItem,setActiveItem] = React.useState(1);
+    const sortRef = React.useRef();
+    const activeLabel = items[activeItem];
 
-    const toggleVisiblePopup = ()=>(
-        setVisiblePopup(!visiblePopup)
-    );
-    /*popup скрывается при нажатии на любую зону на странице, не по popup:*/
 
-    const handleOutsideClick = (e) => {
-        console.log(e);
+    const toggleVisiblePopup = ()=> {
+        setVisiblePopup(!visiblePopup);
     };
-
+    const handleOutsideClick = (e) => {
+        if (!e.path.includes(sortRef.current)){
+            setVisiblePopup(false);
+        }
+    };
+    const onSelectItem = (index) => {
+        setActiveItem(index);
+        setVisiblePopup(false);
+    }
     React.useEffect(()=>{
         document.body.addEventListener('click', handleOutsideClick);
+        console.log(sortRef.current);
         },[]);
 
-
     return (
-        <div className="sort">
+        <div
+            ref={sortRef} className="sort">
             <div className="sort__label">
                 <svg
+                    className={visiblePopup ? 'rotated' : ''}
                     width="10"
                     height="6"
                     viewBox="0 0 10 6"
@@ -35,14 +44,20 @@ function SortPopup() {
                 <b>Сортировка по:</b>
                 <span
                     onClick={toggleVisiblePopup}>
-                    популярности
+                    {activeLabel}
                 </span>
             </div>
             {visiblePopup &&  <div className="sort__popup">
                 <ul>
-                    <li className="active">популярности</li>
-                    <li>цене</li>
-                    <li>алфавиту</li>
+                    {items &&
+                    items.map((name, index) => (
+                        <li
+                            className={activeItem === index ? 'active' : ''}
+                            onClick={() => onSelectItem(index)}
+                            key={`${name}_${index}`}>
+                            {name}
+                        </li>
+                    ))}
                 </ul>
             </div>}
         </div>

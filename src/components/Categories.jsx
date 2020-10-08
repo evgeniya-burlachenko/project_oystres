@@ -39,6 +39,7 @@ function Categories({ items }) {
 
     const onSelectItem = (index) => {
         setActiveItem(index);
+
     }
     return (
         <div>
