@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 
 /*----------классовый компонент------------------------------------:
 class Categories extends React.Component{
@@ -31,7 +31,7 @@ class Categories extends React.Component{
       )}}*/
 
 /*-----------функциональный компонент:----------------------------------*/
-function Categories({ items, onClickItem }) {
+function Categories({ items }) {
     const [activeItem,setActiveItem] = React.useState(null);
    /* возвращает состояние и функцию. которая будет это состояние менять
     const activeItem = state[0];
@@ -40,7 +40,6 @@ function Categories({ items, onClickItem }) {
     const onSelectItem = (index) => {
         setActiveItem(index);
     }
-
     return (
         <div>
             <div className="categories">
