@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 /*----------классовый компонент------------------------------------:
 class Categories extends React.Component{
@@ -31,15 +31,31 @@ class Categories extends React.Component{
       )}}*/
 
 /*-----------функциональный компонент:----------------------------------*/
-
 function Categories({ items, onClickItem }) {
+    const [activeItem,setActiveItem] = React.useState(null);
+   /* возвращает состояние и функцию. которая будет это состояние менять
+    const activeItem = state[0];
+    const setActiveItem = state[1];*/
+
+    const onSelectItem = (index) => {
+        setActiveItem(index);
+    }
+
     return (
         <div>
             <div className="categories">
                 <ul>
-                    <li className="active">Все</li>
-                    {items.map((name, index) => (
-                        <li onClick={() => onClickItem(name)} key={`${name}_${index}`}>{name}</li>
+                    <li className={activeItem === null ? 'active' : ''}
+                        onClick={() => onSelectItem(null)}>Все
+                    </li>
+                    {items && /*если items хранит положительное значение , то выполняется, если отрицательная. то не выаолняется - проверка на undefined*/
+                        items.map((name, index) => (
+                        <li
+                            className={activeItem === index ? 'active' : ''}
+                            onClick={() => onSelectItem(index)}
+                            key={`${name}_${index}`}>
+                            {name}
+                        </li>
                     ))} 
                 </ul>
             </div>
