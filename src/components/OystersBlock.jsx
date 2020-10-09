@@ -1,27 +1,57 @@
 import React from "react";
+import classNames from 'classnames';
 
-function OystersBlock({name}) {
+function OystersBlock({name, imageURL,price,types,sizes}) {
+    const availableTypes = ['в пакете','в подарочной коробке'];
+    const availableSizes = [1 , 5, 20];
+    const [activeType, setActiveType] = React.useState(types[0]);
+    const [activeSize, setActiveSize] = React.useState(sizes[0]);
+
+    const onSelectType = (index) => {
+        setActiveType(index);
+
+    };
+
+    const onSelectSize = (index) => {
+        setActiveSize(index);
+
+    };
     return (
     <div className="pizza-block">
         <img
             className="pizza-block__image"
-            src="https://kartinkinaden.ru/uploads/posts/2015-10/1445430381_57.jpg"
-            alt="Pizza"
+            src={imageURL}
+            alt="Oysters"
         />
         <h4 className="pizza-block__title">{name}</h4>
         <div className="pizza-block__selector">
             <ul>
-                <li className="active">опт</li>
-                <li>розница</li>
+                {availableTypes.map((type,index) =>
+                    <li
+                        key={type}
+                        onClick={()=>onSelectType(index)}
+                        className={classNames({
+                            active: activeType === index,
+                            disabled: !types.includes(index),
+                        }) }>
+                        {type}
+                    </li>)}
             </ul>
             <ul>
-                <li className="active">1 шт</li>
-                <li>от 5 шт.</li>
-                <li>от 20 шт.</li>
+                {availableSizes.map((size,index) =>
+                    <li
+                        key={size}
+                        onClick={()=>onSelectSize(index)}
+                        className={classNames({
+                            active: activeSize === index,
+                            disabled: !sizes.includes(size),
+                        }) }>
+                        от {size} шт.
+                    </li>)}
             </ul>
         </div>
         <div className="pizza-block__bottom">
-            <div className="pizza-block__price">от 250 ₽</div>
+            <div className="pizza-block__price">от {price} ₽</div>
             <div className="button button--outline button--add">
                 <svg
                     width="12"

@@ -14,7 +14,8 @@ return(
         <div className="content__items">
 
                 {items.map((obj) => (
-                    <OystersBlock key={obj.id} name={obj.name}/>
+                    <OystersBlock key={obj.id}
+                        {...obj}/>
                     )
             ) }
 
