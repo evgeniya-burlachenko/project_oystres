@@ -1,37 +1,61 @@
 import React from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux'
 
 import {Header} from "./components";
 import {Cart,Home} from "./pages";
 
 import {Route} from "react-router-dom";
+import {setOysters} from "./redux/actions/oysters";
 
-function App() {
-    const  [oysters, setOysters] = React.useState([]);
+/*function App() {
 
-React.useEffect(() => {
-    /*fetch('http://localhost:3000/db.json')
-        .then((resp) => resp.json())
-        .then((json) => {
-            setOysters(json.oysters);
-        });
-    },[])*/
-    axios.get('http://localhost:3000/db.json')
-        .then(({data})=>{
-            setOysters(data.oysters);
-            });
+
+  act.useEffect(() => {
+
+  axios.get('http://localhost:3000/db.json')
+      .then(({data})=>{
+          setOysters(data.oysters);
+          });
 },[])
 
-  return (
-      <div className="wrapper">
-        <Header/>
+return ;
 
-        <div className="content">
-            <Route path="/" render={() => <Home items={oysters}/>} exact />
-            <Route path="/cart" component={Cart} exact/>
+}*/
+
+class App extends React.Component{
+    componentDidMount() {
+        axios.get('http://localhost:3000/db.json')
+            .then(({data})=>{
+                this.props.setOysters(data.oysters);
+
+            });
+    }
+    render() {
+        console.log(this.props);
+        return (
+        <div className="wrapper">
+            <Header/>
+            <div className="content">
+                <Route path="/" render={() => <Home items={this.props.items}/>} exact />
+                <Route path="/cart" component={Cart} exact/>
+            </div>
         </div>
-      </div>
-  );
-}
 
-export default App;
+    );
+    }
+
+}
+const  mapStateToProps = (state) => {
+    return {
+        items: state.oysters.items,
+        filters: state.filters,
+    };
+};
+const  mapDispatchToProps = (dispatch) => {
+    return {
+        setOysters: (items) => dispatch(setOysters(items)),
+    }
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);

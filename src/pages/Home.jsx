@@ -8,7 +8,12 @@ return(
             <Categories
                 onClickItem ={(name) => console.log(name)}
                 items = {['Япония', 'Африка','Америка', 'Ближний восток','Сеты']}/>
-            <SortPopup items ={['популярности','цене','алфавиту']}/>
+            <SortPopup
+                items ={[
+                    {name:'популярности',type:'popular'},
+                    {name:'цене',type:'price'},
+                    {name:'алфавиту',type: 'alphabet'},
+                    ]}/>
         </div>
         <h2 className="content__title">Все морепродукты</h2>
         <div className="content__items">
