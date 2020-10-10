@@ -25,14 +25,12 @@ return ;
 
 class App extends React.Component{
     componentDidMount() {
-        axios.get('http://localhost:3000/db.json')
-            .then(({data})=>{
+        axios.get('http://localhost:3000/db.json').then(({data})=>{
                 this.props.setOysters(data.oysters);
-
             });
     }
+
     render() {
-        console.log(this.props);
         return (
         <div className="wrapper">
             <Header/>
@@ -41,21 +39,19 @@ class App extends React.Component{
                 <Route path="/cart" component={Cart} exact/>
             </div>
         </div>
-
     );
     }
-
 }
-const  mapStateToProps = (state) => {
+export default connect(
+    (state) => {
     return {
         items: state.oysters.items,
         filters: state.filters,
     };
-};
-const  mapDispatchToProps = (dispatch) => {
+},
+(dispatch) => {
     return {
         setOysters: (items) => dispatch(setOysters(items)),
-    }
-};
-
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+    };
+    },
+)(App);
