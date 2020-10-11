@@ -8,6 +8,7 @@ const oysters = (state = initialState, action) => {
         return {
             ...state,
             items: action.playload,
+            isLoaded: true,
         };
     }
     return state;

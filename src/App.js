@@ -1,22 +1,13 @@
 import React from 'react';
-import axios from 'axios';
+
 import {useDispatch} from "react-redux";
 
 import {Header} from "./components";
 import {Cart,Home} from "./pages";
 import {Route} from "react-router-dom";
-import {setOysters} from "./redux/actions/oysters";
+
 
 function App() {
-    const dispatch = useDispatch();
-
-
-    React.useEffect(()=>{
-        axios.get('http://localhost:3001/oysters').then(({data})=>{
-            dispatch(setOysters(data));
-            });
-    },[]);
-
     return (
         <div className="wrapper">
             <Header/>

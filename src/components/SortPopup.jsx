@@ -6,8 +6,6 @@ const SortPopup = React.memo(
         const [activeItem,setActiveItem] = React.useState(1);
         const sortRef = React.useRef();
         const activeLabel = items[activeItem].name;
-
-
         const toggleVisiblePopup = ()=> {
             setVisiblePopup(!visiblePopup);
         };
@@ -62,7 +60,6 @@ const SortPopup = React.memo(
                 </div>}
             </div>
         )
-
     }
 );
 export default SortPopup;

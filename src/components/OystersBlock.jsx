@@ -1,5 +1,4 @@
 import React from "react";
-
 import classNames from 'classnames';
 
 function OystersBlock({name, imageURL,price,types,sizes}) {
@@ -7,11 +6,9 @@ function OystersBlock({name, imageURL,price,types,sizes}) {
     const availableSizes = [1 , 5, 20];
     const [activeType, setActiveType] = React.useState(types[0]);
     const [activeSize, setActiveSize] = React.useState(sizes[0]);
-
     const onSelectType = (index) => {
         setActiveType(index);
     };
-
     const onSelectSize = (index) => {
         setActiveSize(index);
     };
