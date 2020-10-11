@@ -12,8 +12,8 @@ function App() {
 
 
     React.useEffect(()=>{
-        axios.get('http://localhost:3000/db.json').then(({data})=>{
-            dispatch(setOysters(data.oysters));
+        axios.get('http://localhost:3001/oysters').then(({data})=>{
+            dispatch(setOysters(data));
             });
     },[]);
 
