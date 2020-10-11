@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+
 import classNames from 'classnames';
 
 function OystersBlock({name, imageURL,price,types,sizes}) {
@@ -71,7 +71,7 @@ function OystersBlock({name, imageURL,price,types,sizes}) {
     </div>
     );
 }
-
+/*
 OystersBlock.propTypes = {
     name: PropTypes.string.isRequired,
     imageURL: PropTypes.string.isRequired,
@@ -82,5 +82,5 @@ OystersBlock.propTypes = {
 OystersBlock.defaultProps = {
     name:'-----',
     types: [],
-};
+};*/
 export default OystersBlock;
