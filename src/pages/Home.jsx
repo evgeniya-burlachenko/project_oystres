@@ -1,4 +1,4 @@
-import {Categories, SortPopup, OystersBlock} from "../components";
+import {Categories, SortPopup, Index,LoadingBlock} from "../components";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {setCategory} from "../redux/actions/filters";
@@ -13,8 +13,10 @@ const sortItems=[
 function Home() {
     const dispatch = useDispatch();
     const items = useSelector(({ oysters }) => oysters.items);
+    const isLoaded = useSelector(({ oysters }) => oysters.isLoaded);
+
     React.useEffect(()=>{
-                  dispatch(fetchOysters());
+                 dispatch(fetchOysters());
 
     },[]);
 
@@ -34,10 +36,10 @@ function Home() {
         </div>
         <h2 className="content__title">Все морепродукты</h2>
         <div className="content__items">
-                {items && items.map((obj) => (
-                    <OystersBlock key={obj.id} {...obj}/>
-                    )
-            ) }
+                {isLoaded
+                ? items.map((obj) => <Index key={obj.id} isLoading={true} {...obj}/>)
+
+            :Array(12).fill(<LoadingBlock/>)}
         </div>
     </div>
 );

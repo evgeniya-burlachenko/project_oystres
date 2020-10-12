@@ -1,17 +1,24 @@
 import React from "react";
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
-function OystersBlock({name, imageURL,price,types,sizes}) {
+
+
+function Index({name, imageURL,price,types,sizes}) {
     const availableTypes = ['в пакете','в подарочной коробке'];
     const availableSizes = [1 , 5, 20];
     const [activeType, setActiveType] = React.useState(types[0]);
     const [activeSize, setActiveSize] = React.useState(sizes[0]);
+
+
     const onSelectType = (index) => {
         setActiveType(index);
     };
     const onSelectSize = (index) => {
         setActiveSize(index);
     };
+
+
     return (
     <div className="pizza-block">
         <img
@@ -68,16 +75,20 @@ function OystersBlock({name, imageURL,price,types,sizes}) {
     </div>
     );
 }
-/*
-OystersBlock.propTypes = {
-    name: PropTypes.string.isRequired,
-    imageURL: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    types: PropTypes.arrayOf(PropTypes.number).isRequired,
-    sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+
+Index.propTypes = {
+    name: PropTypes.string,
+    imageURL: PropTypes.string,
+    price: PropTypes.number,
+    types: PropTypes.arrayOf(PropTypes.number),
+    sizes: PropTypes.arrayOf(PropTypes.number),
+
 };
-OystersBlock.defaultProps = {
+Index.defaultProps = {
     name:'-----',
+    price:0,
     types: [],
-};*/
-export default OystersBlock;
+    sizes:[],
+
+};
+export default Index;
