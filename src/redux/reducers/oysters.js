@@ -2,15 +2,24 @@ const initialState ={
     items: [],
     isLoaded: false,
 };
-
 const oysters = (state = initialState, action) => {
-    if (action.type ==='SET_OYSTERS') {
-        return {
-            ...state,
-            items: action.playload,
-            isLoaded: true,
-        };
+    switch (action.type) {
+        case 'SET_OYSTERS':
+            return {
+                ...state,
+                items: action.payload,
+                isLoaded: true,
+            };
+        case 'SET_LOADED':
+                return {
+                    ...state,
+                    isLoaded: action.payload,
+                };
+        default:
+            return state;
     }
-    return state;
+
 };
+
+
 export default oysters;
