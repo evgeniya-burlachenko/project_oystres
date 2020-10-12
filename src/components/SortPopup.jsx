@@ -11,8 +11,9 @@ const SortPopup = React.memo(
         const toggleVisiblePopup = ()=> {
             setVisiblePopup(!visiblePopup);
         };
-        const handleOutsideClick = (e) => {
-            if (!e.path.includes(sortRef.current)){
+        const handleOutsideClick = (event) => {
+            const path = event.path || (event.composedPath && event.composedPath());
+            if (!path.includes(sortRef.current)) {
                 setVisiblePopup(false);
             }
         };
@@ -67,14 +68,14 @@ const SortPopup = React.memo(
         )
     }
 );
-/*SortPopup.propTypes = {
+SortPopup.propTypes = {
     activeSortType: PropTypes.string.isRequired,
     items:PropTypes.arrayOf(PropTypes.object).isRequired,
     onClickSortType: PropTypes.func.isRequired,
 };
 SortPopup.defaultProps = {
     items: [],
-};*/
+};
 
 export default SortPopup;
 
